@@ -20,9 +20,9 @@ import FBOrgApp from './FBOrg/views/FBOrgApp';
 
 import GlobalHeader from './Components/GlobalHeader';
 import GlobalFooter from './Components/GlobalFooter';
+import PageNavigator from './Components/PageNavigator';
 
 
-const PageNavigator = ({ title }) => <div style={{ backgroundColor: '#007acc', padding: '10px', textAlign: 'left', color: 'white' }}>{title}</div>;
 
 
 class App extends Component {
