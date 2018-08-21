@@ -21,6 +21,21 @@ const formatTime = data => {
 }
 
 /**
+ * 格式化时间格式为 YYYY/MM/DD HH:MM:SS
+ * @param {*} date 
+ */
+function fmDate1(date) {
+    var now = date;
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var date = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    return year + "/" + month + "/" + date + "   " + hour + ":" + minute+":"+second;
+}
+
+/**
  * 获取URL参数值
  * @param {*} search - the query string
  * @param {*} key 参数值
@@ -32,4 +47,6 @@ const getParamVal = (search,key) => {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-export { formatTime, getParamVal };
+const setHeaderTitle = (title) => document.title = title;
+
+export { formatTime, getParamVal, fmDate1, setHeaderTitle };

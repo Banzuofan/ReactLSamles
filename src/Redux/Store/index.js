@@ -27,11 +27,4 @@ const store = createStore(
   )
 )
 
-// function configureStore() {
-//   const store = createStore(AppReducer);
-//   return store;
-// }
-
-// const OwnedStore = configureStore();
-
 export default store;

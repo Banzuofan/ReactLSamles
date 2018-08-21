@@ -3,8 +3,6 @@ import {
     Link
 } from 'react-router-dom'
 
-console.log(this);
-
 export default class HomePage extends Component {
     render() {
         return (

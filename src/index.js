@@ -11,17 +11,14 @@ import App from './App';
 
 import store from '../src/Redux/Store/index';
 
-// const GlobalFooter = () => <div style={{ backgroundColor: '#e5e5e5', padding: '10px', textAlign: 'left', margin: '-50px 0 0' }} > 2018-6-18</div>;
 
 ReactDOM.render(
     <Provider store={store}>
-    <div>
         <BrowserRouter>
             <Route component={App}>
-                
+
             </Route>
         </BrowserRouter>
-        </div>
     </Provider>,
     document.getElementById('root'));
 

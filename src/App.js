@@ -3,8 +3,12 @@ import {
   Route, Switch, Link, Redirect, withRouter
 } from 'react-router-dom'
 
-import { Grid, Menu, Segment, Button, Tab, Icon, Label } from 'semantic-ui-react';
+import { Grid, Segment, Button, Tab, Icon, Label } from 'semantic-ui-react';
+import {Menu} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+
+// import { Menu} from 'antd';
+// import 'antd/dist/antd.css'; 
 
 import logo from './logo.svg';
 import './App.css';
@@ -17,10 +21,10 @@ import CommentApp from './Comment/CommentApp';
 import { StatRoute, StatManager} from './Components/StatRoute';
 import StatSwitch from './Components/StatSwitch';
 import FBOrgApp from './FBOrg/views/FBOrgApp';
+import { setHeaderTitle } from './Util/Util';
 
 import GlobalHeader from './Components/GlobalHeader';
 import GlobalFooter from './Components/GlobalFooter';
-import PageNavigator from './Components/PageNavigator';
 
 
 
@@ -65,17 +69,17 @@ class App extends Component {
     
   }
 
-  componentWillReceiveProps(nextProps){
-    
-    const {location} = nextProps;
-    if(location){
-      if (location.pathname==='/'){
+  componentWillReceiveProps(nextProps) {
+
+    const { location } = nextProps;
+    if (location) {
+      if (location.pathname === '/') {
         this.setState({
           navigator_title: 'home',
           activeItem: 'home'
         })
       }
-      else if (location.pathname==='/about'){
+      else if (location.pathname === '/about') {
         this.setState({
           navigator_title: 'about',
           activeItem: 'about'
@@ -93,6 +97,8 @@ class App extends Component {
         })
       }
     }
+
+    setHeaderTitle(location.pathname);
   }
 
   componentDidMount(){
@@ -120,48 +126,46 @@ class App extends Component {
     return (
       <div className="wrapper">
 
-        <div><GlobalHeader onclick={this.popToRoot} /></div>
+        <header className="page-header">
+          <GlobalHeader onclick={this.popToRoot} title={navigator_title} />
+        </header>
         
-        <div className="content">
-          <Grid padded >
-            <Grid.Column width={4} style={{ padding: '0px', margin: '0px' }}>
-              <Menu vertical fluid tabular  color='grey' >
-                <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-                <Menu.Item name='about' active={activeItem === 'about'} onClick={this.handleItemClick} />
-                <Menu.Item name='renderfunc' active={activeItem === 'renderfunc'} onClick={this.handleItemClick} />
-              </Menu>
-            </Grid.Column>
+        <div className="page-content">
+          <div className="left-menu">
+            <Menu pointing secondary vertical color='blue' >
+              <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+              <Menu.Item name='about' active={activeItem === 'about'} onClick={this.handleItemClick} />
+              <Menu.Item name='renderfunc' active={activeItem === 'renderfunc'} onClick={this.handleItemClick} />
+            </Menu>
+          </div>
+          <div className="left-menu-content">
+            {/* <PageNavigator title={navigator_title} /> */}
 
-            <Grid.Column width={12} style={{ padding: '0px', textAlign:'center' }}>
-              <PageNavigator title={navigator_title} />
+            {/* 1.相对精确的路径靠上放置 */}
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/home/item3" render={() => <div>item3</div>} />
+              <Route path="/home/about" component={AboutPage} />
+              <Route path="/home" component={HomePage} />
 
-              {/* 1.相对精确的路径靠上放置 */}
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/home/item3" render={() => <div>item3</div>} />
-                <Route path="/home/about" component={AboutPage} />
-                <Route path="/home" component={HomePage} />
-                
-                <Route path="/about" component={AboutPage} />
-                <Route path="/renderfunc" render={() => <div>render function</div>} />
-                <Route path="/com/app/workspace/:user" component={WorkspacePage} />
-                <Route path="/app/workspace/:user" component={WorkspacePage} />
-                <Route path="/about/workspace/:user" component={WorkspacePage} />
-                <Route path="/workspace/:user" component={WorkspacePage} />
-                <Route path="/notmatch" component={NotMatchPage}/>
+              <Route path="/about" component={AboutPage} />
+              <Route path="/renderfunc" render={() => <div>render function</div>} />
+              <Route path="/com/app/workspace/:user" component={WorkspacePage} />
+              <Route path="/app/workspace/:user" component={WorkspacePage} />
+              <Route path="/about/workspace/:user" component={WorkspacePage} />
+              <Route path="/workspace/:user" component={WorkspacePage} />
+              <Route path="/notmatch" component={NotMatchPage} />
 
-                {/* 普通跳转 */}
-                <Route path="/facebook_org" component={FBOrgApp} />
-                {/* 带状态检测逻辑的跳转 */}
-                <StatRoute path="/commentapp" component={CommentApp} />
-                {/* 用于模拟登陆请求 */}
-                <Route path="/statswitch" component={StatSwitch}/>
-                {/* 找不到匹配路径 */}
-                <Redirect path="*" to="/notmatch" />
-              </Switch>
-
-            </Grid.Column>
-          </Grid>
+              {/* 普通跳转 */}
+              <Route path="/facebook_org" component={FBOrgApp} />
+              {/* 带状态检测逻辑的跳转 */}
+              <StatRoute path="/commentapp" component={CommentApp} />
+              {/* 用于模拟登陆请求 */}
+              <Route path="/statswitch" component={StatSwitch} />
+              {/* 找不到匹配路径 */}
+              <Redirect path="*" to="/notmatch" />
+            </Switch>
+          </div>
         </div>
 
         <footer className="page-footer">

@@ -16,10 +16,11 @@ class FBOrgApp extends Component {
     }
 
     render() {
+        
         const { repos, status, error, profile_status, profile } = this.props;
 
         return (
-            <div>
+            <div style={{display:'flex'}}>
                 {/* loading indicator */}
                 {status === NetworkStatus.StatusLoading && 
                 <Dimmer active inverted>
@@ -30,18 +31,16 @@ class FBOrgApp extends Component {
                 {status === NetworkStatus.StatusFailed && 
                 <div style={{ color: 'red' }}>{error.message}</div>
                 }
-
-                <Grid celled>
-                    <Grid.Column width={5}>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems:'stretch'}}>
+                    <div style={{ flex: 1,  }}>
                         {profile_status === NetworkStatus.StatusSuccess && <FBOrgProfile profile={profile} />}
-                        {profile_status === NetworkStatus.StatusFailed && <p style={{color:'grey'}}>暂无内容</p>}
-                    </Grid.Column>
-                    <Grid.Column width={10}>
+                        {profile_status === NetworkStatus.StatusFailed && <p style={{ color: 'grey' }}>暂无内容</p>}
+                    </div>
+                    <div style={{ flex: 2,  }}>
                         {status === NetworkStatus.StatusSuccess && <FBOrgRepos repos={repos} />}
                         {status === NetworkStatus.StatusFailed && <p style={{ color: 'grey' }}>暂无内容</p>}
-                    </Grid.Column>
-                </Grid>
-                
+                    </div>
+                </div>
             </div>
         )
     }
