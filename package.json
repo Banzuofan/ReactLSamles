@@ -1,0 +1,40 @@
+{
+  "name": "easymail",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://10.13.84.2:8090/react-demo",
+  "dependencies": {
+    "path-to-regexp": "^2.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-act": "^1.7.3",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^0.17.4",
+    "mdbreact": "^4.7.0",
+    "redux-action": "^1.2.2",
+    "redux-actions": "^2.6.1",
+    "redux-devtools": "^3.4.1"
+  },
+  "proxy": {
+    "/users/octocat/gists": {
+      "target": "https://api.github.com",
+      "changeOrigin": true,
+      "secure": false
+    }
+  }
+}
