@@ -21,8 +21,8 @@ const GlobalHeader = ({ title, onclick }) => (
     }} >
 
         <div>
-            <Icon name="at" size='huge' />
-            <span style={{ fontSize: 30, color: '#b1b1b1' }}>ROUTER | </span>
+            {/* <Icon name="at" size='huge' /> */}
+            <span style={{ fontSize: 30, color: '#b1b1b1' }}>ROUTER TESTS | </span>
             <span style={{ fontSize: 18, color: '#b1b1b1', marginLeft: 10 }}>{`${title}`}</span>
         </div>
     </div>

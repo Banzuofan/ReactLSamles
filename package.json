@@ -1,6 +1,6 @@
 {
-  "name": "easymail",
-  "version": "0.1.0",
+  "name": "routertests",
+  "version": "1.1.0",
   "private": true,
   "homepage": "http://10.13.84.2:8090/react-demo",
   "dependencies": {

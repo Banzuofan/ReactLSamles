@@ -1,0 +1,32 @@
+
+.noticeboard {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    
+    max-height: 120px;
+}
+
+.noticeboard::-webkit-scrollbar {
+    display: none;
+}
+
+.header {
+  border: 1px solid #252525;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 5px 0;
+  color: #252525;
+}
+
+.content {
+  text-align: left;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #252525;
+  padding: 10px 5px;
+}
+
+.content .item{
+  font-size: 16;
+  color: #252525;
+}

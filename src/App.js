@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Route, Switch, Link, Redirect, withRouter
 } from 'react-router-dom'
@@ -25,11 +26,16 @@ import { setHeaderTitle } from './Util/Util';
 
 import GlobalHeader from './Components/GlobalHeader';
 import GlobalFooter from './Components/GlobalFooter';
-
-
+import NoticeBoard from './Components/NoticeBoard';
 
 
 class App extends Component {
+
+  // constructor(props){
+  //   super(props);
+  //   this.noticeBlankRef = React.createRef();
+  //   console.log(this.noticeBlankRef);
+  // }
 
   state = {
     activeItem: 'home',
@@ -105,6 +111,12 @@ class App extends Component {
     this.unlisten = this.props.history.listen((location) => {
       console.log("<this.props.history.listen> location:"+JSON.stringify(location));
     });
+
+    // this.noticeBlankRef.style.backgroundColor = 'blue';
+    // console.log(this.noticeBlankRef.style);
+    // console.log(this.noticeBlankRef.attributes);
+    // console.log('style.width:'+parseInt(this.noticeBlankRef.style.width));
+    // this.noticeBlankRef.style.height = '400px';
   }
 
   componentWillUnmount(){
@@ -137,10 +149,11 @@ class App extends Component {
               <Menu.Item name='about' active={activeItem === 'about'} onClick={this.handleItemClick} />
               <Menu.Item name='renderfunc' active={activeItem === 'renderfunc'} onClick={this.handleItemClick} />
             </Menu>
+            <NoticeBoard header="NOTICEBOARD" items={['11111','22222','33333', '44444', '55555', '66666', '77777', '88888']} />
           </div>
-          <div className="left-menu-content">
-            {/* <PageNavigator title={navigator_title} /> */}
 
+          <div className="left-menu-content">
+          
             {/* 1.相对精确的路径靠上放置 */}
             <Switch>
               <Route exact path="/" component={HomePage} />
@@ -173,6 +186,11 @@ class App extends Component {
         </footer>
       </div>
     );
+  }
+
+  componentDidUpdate(){
+    console.log(this.noticeBlankRef);
+    
   }
 }
 

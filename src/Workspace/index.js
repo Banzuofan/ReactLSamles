@@ -5,8 +5,8 @@ export default class WorkspacePage extends Component {
 
     render() {
         const { match, location } = this.props; 
-        // console.log(`match: ${JSON.stringify(match)}`);
-        // console.log(`location: ${JSON.stringify(location)}`);
+        console.log(`match: ${JSON.stringify(match)}`);
+        console.log(`location: ${JSON.stringify(location)}`);
         return (
             <div style={{textAlign:"left", paddingLeft:"4px"}}>
                 <div>path: {match.params.user}</div>

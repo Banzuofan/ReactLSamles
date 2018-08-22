@@ -47,8 +47,27 @@ html{_height:auto;_padding:100px 0 50px;} */
   flex-basis: auto;
 }
 
+
+/* .notepad::before{
+  content: '';
+  padding: 40% 0 40% 0;
+  display: block;
+} */
+
+/* .notepad:hover::before{
+  content: '{';
+  color: blue;
+}
+
+.notepad:hover::after{
+  content: '}';
+  color: blue;
+} */
+
+
 .left-menu {
   flex-grow: 0;
+
 }
 
 .left-menu-content {
